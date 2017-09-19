@@ -27,7 +27,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.os.PowerManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,11 +56,17 @@ abstract public class AbstractTriggerReceiver extends BroadcastReceiver {
             String data = bundle.getString(Options.EXTRA);
             JSONObject dict = new JSONObject(data);
 			
-			 Log.d("Trigger", "on Trigger Received: ========================================================");
+            PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+            boolean isScreenOn = pm.isScreenOn();
+            Log.e("screen on....", ""+isScreenOn);
+            if(isScreenOn==false)
+            {
+                PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK |PowerManager.ACQUIRE_CAUSES_WAKEUP |PowerManager.ON_AFTER_RELEASE,"MyLock");
+                wl.acquire(10000);
+                PowerManager.WakeLock wl_cpu = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"MyCpuLock");
 
-            Intent appIntent = new Intent(context, MainActivity.class);
-            appIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.getApplicationContext().startActivity(appIntent);
+                wl_cpu.acquire(10000);
+            }
 
             options = new Options(context).parse(dict);
         } catch (JSONException e) {

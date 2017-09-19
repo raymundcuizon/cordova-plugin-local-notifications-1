@@ -6,9 +6,9 @@ Every syntax is same as [katzer](https://github.com/katzer/cordova-plugin-local-
 I've added this folowing things.
 
 1. **heads up notification will be shown as Screenshot when notification will appear in Android and lollipop and Marshmallow.**
-2. **App will come to foreground from background when notification is triggred.**
+2. **App will come to foreground from background when notification is triggred.** -- >REMOVED (Android)
 3. **the notification sound will be looped until user clicks on notification or opens phone's notification panel.**
-
+4. **Wake up screen on notification trigger if screen is turn off.** -->ADDED (Android)
 Basically My idea/requirement was to act notifications like alarms. and this does the job.
 
 **All the changes are made in Android platform.** ios and windows are as it is they are in [katzer](https://github.com/katzer/cordova-plugin-local-notifications)'s plugin
