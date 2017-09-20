@@ -4,7 +4,9 @@
 **Wake up screen on notification trigger if the screen is turn off.**
 
 - Permission
+```
 <uses-permission android:name="android.permission.WAKE_LOCK" />
+```
 
 =================================
 
