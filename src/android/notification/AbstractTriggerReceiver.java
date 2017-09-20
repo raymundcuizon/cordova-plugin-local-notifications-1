@@ -58,7 +58,6 @@ abstract public class AbstractTriggerReceiver extends BroadcastReceiver {
 			
             PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
             boolean isScreenOn = pm.isScreenOn();
-            Log.e("screen on....", ""+isScreenOn);
             if(isScreenOn==false)
             {
                 PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK |PowerManager.ACQUIRE_CAUSES_WAKEUP |PowerManager.ON_AFTER_RELEASE,"MyLock");
