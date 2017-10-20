@@ -237,7 +237,7 @@ public class Notification {
         } else {
             // Notification for Jellybean and above
             android.app.Notification notifs = builder.build();
-            notifs.flags = android.app.Notification.FLAG_INSISTENT | android.app.Notification.FLAG_ONGOING_EVENT | android.app.Notification.FLAG_AUTO_CANCEL;
+            notifs.flags = android.app.Notification.FLAG_ONGOING_EVENT | android.app.Notification.FLAG_AUTO_CANCEL;
             getNotMgr().notify(id, notifs);
         }
     }
